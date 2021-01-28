@@ -1,0 +1,47 @@
+.medium-editor-toolbar-active {
+    visibility: visible;
+    background: rgba(255, 255, 255, 0.5);
+    color: rgb(0, 0, 0);
+}
+
+.medium-editor-element,
+.descripcion {
+    min-height: 300px;
+    background: #fff;
+    color: rgba(46, 46, 46, 0);
+
+    ol, ul, h1, h2, h3, p, a {
+        color: #2f4752;
+    }
+
+    ol, ul {
+        padding-left: 50px;
+    }
+
+    ol {
+        list-style: decimal;
+    }
+    
+    ul {
+        list-style: disc;
+    }
+
+    h2, h3 {
+        margin: 1rem 0;
+    }
+
+    h2 {
+        font-size: 1.0rem;
+    }
+
+    h3 {
+        font-size: 2.2rem;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 2;
+        color: rgba(46, 46, 46, 0);
+    }
+
+}

@@ -26,4 +26,5 @@ Route::get('/vacantes', 'App\Http\Controllers\VacanteController@index')->name('v
 Route::get('/vacantes/create', 'App\Http\Controllers\VacanteController@create')->name('vacantes.create');
 
 
-
+// Subir imagen
+Route::post('/vacantes/imagen', 'App\Http\Controllers\VacanteController@imagen')->name('vacantes.imagen');

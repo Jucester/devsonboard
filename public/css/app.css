@@ -41731,6 +41731,69 @@ video {
           animation: bounce 1s infinite;
 }
 
+.medium-editor-toolbar-active {
+  visibility: visible;
+  background: rgba(255, 255, 255, 0.5);
+  color: black;
+}
+
+.medium-editor-element,
+.descripcion {
+  min-height: 300px;
+  background: #fff;
+  color: rgba(46, 46, 46, 0);
+}
+
+.medium-editor-element ol, .medium-editor-element ul, .medium-editor-element h1, .medium-editor-element h2, .medium-editor-element h3, .medium-editor-element p, .medium-editor-element a,
+.descripcion ol,
+.descripcion ul,
+.descripcion h1,
+.descripcion h2,
+.descripcion h3,
+.descripcion p,
+.descripcion a {
+  color: #2f4752;
+}
+
+.medium-editor-element ol, .medium-editor-element ul,
+.descripcion ol,
+.descripcion ul {
+  padding-left: 50px;
+}
+
+.medium-editor-element ol,
+.descripcion ol {
+  list-style: decimal;
+}
+
+.medium-editor-element ul,
+.descripcion ul {
+  list-style: disc;
+}
+
+.medium-editor-element h2, .medium-editor-element h3,
+.descripcion h2,
+.descripcion h3 {
+  margin: 1rem 0;
+}
+
+.medium-editor-element h2,
+.descripcion h2 {
+  font-size: 1rem;
+}
+
+.medium-editor-element h3,
+.descripcion h3 {
+  font-size: 2.2rem;
+}
+
+.medium-editor-element p,
+.descripcion p {
+  font-size: 1rem;
+  line-height: 2;
+  color: rgba(46, 46, 46, 0);
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;
