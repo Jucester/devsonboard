@@ -28,3 +28,4 @@ Route::get('/vacantes/create', 'App\Http\Controllers\VacanteController@create')-
 
 // Subir imagen
 Route::post('/vacantes/imagen', 'App\Http\Controllers\VacanteController@imagen')->name('vacantes.imagen');
+Route::post('/vacantes/borrarImagen', 'App\Http\Controllers\VacanteController@borrarImagen')->name('vacantes.borrar');

@@ -8,6 +8,7 @@ use App\Models\Categoria;
 use App\Models\Ubicacion;
 use App\Models\Experiencia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class VacanteController extends Controller
 {
@@ -109,6 +110,32 @@ class VacanteController extends Controller
 
     public function imagen(Request $request)
     {
-        return $request->file('file');
+
+        $imagen = $request->file('file');
+        $name = time() . '.' . $imagen->extension();
+        
+
+        $imagen->move(public_path('storage/vacantes'), $name);
+
+        return response()->json(['correcto' => $name]);
+
+    }
+
+
+    public function borrarImagen(Request $request)
+    {
+        if($request->ajax()) {
+            $image = $request->get('imagen');
+         
+            if( File::exists('storage/vacantes/' . $image) ) {
+                File::delete('storage/vacantes/' . $image);
+                return response()->json(['Imagen eliminada' => $image], 200);
+            }
+
+            return response('Error', 200);
+        }
+
+
+
     }
 }

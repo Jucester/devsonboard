@@ -132,6 +132,8 @@
 
                 <div class="dropzone roundes bg-gray-100" id="dropzone"></div>
 
+                <input type="hidden" name="imagen" id="imagen">
+
                 <p id="error">  </p>
         
             </div>
@@ -197,15 +199,21 @@
                         'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
                     },
                     // Si se procesa bien la imagen en el servidor
-                    success: function(file, response) {
-                      
+                    success: function(file, response) {                   
+                        // Quita el error de pantalla si existe
                         document.querySelector('#error').textContent = "";
+
+                        // Envía el nombre de la imagen para guardarla en la DB
+                        document.querySelector('#imagen').value = response.correcto;
+
+                        // Añadir el nombre que se almacena en el servidor
+                        file.serverImagenName = response.correcto;
                     },
                     // Si ocurre un error en el cliente
+                    /*
                     error: function(file, response) {
-                    
                         document.querySelector('#error').textContent = "Formano no válido";
-                    },
+                    }, */
                     // Que hacer si se supera el número de archivos permitidos
                     maxfilesexceeded: function(file) {
                         console.log(this.files);
@@ -220,7 +228,18 @@
                     },
                     // Muestra que archivo fue eliminado por consola
                     removedfile: function(file, response) {
-                        console.log('Removed: ', file);
+                      
+
+                        file.previewElement.parentNode.removeChild(file.previewElement);
+
+                        params = {
+                            imagen: file.serverImagenName
+                        }
+
+                        axios.post('/vacantes/borrarImagen/', params)
+                             .then( res => console.log(res))
+                             .catch( err => console.error(err));
+
                     }
                 })
 
