@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/vacantes', 'App\Http\Controllers\VacanteController@index')->name('vacantes.index');
 Route::get('/vacantes/create', 'App\Http\Controllers\VacanteController@create')->name('vacantes.create');
+Route::post('/vacantes', 'App\Http\Controllers\VacanteController@store')->name('vacantes.store');
 
 
 // Subir imagen
