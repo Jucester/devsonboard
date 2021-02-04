@@ -3,7 +3,8 @@
     <div>
         <ul class="flex flex-wrap justify-center">
         <li
-                class="border border-gray-700 px-10 py-3 mb-3 rounded mr-4"
+                class="border border-gray-700 px-10 py-3 mb-3 rounded mr-4 cursor-pointer"
+                :class="verificarActive(skill)"
                 v-for="( skill, i) in this.skills"
                 v-bind:key="i"
                 v-on:click="activar($event)"
@@ -17,14 +18,28 @@
 
 <script>
     export default {
-        props: ['skills'],
+        props: ['skills', 'oldskills'],
         data: function() {
             return {
                 selectedSkills: new Set()
             }
         },
+        created: function()
+        {
+            if(this.oldskills) {
+                let skillsArray = this.oldskills.split(',');
+                skillsArray.forEach( skill => {
+                    ('Adding')
+                    this.selectedSkills.add(skill)
+                });
+
+            }
+        },
         mounted() {
             console.log(this.skills);
+            console.log(this.oldskills)
+            // Set the skills that the user selected before the form reload
+            document.querySelector('#skills').value = this.oldskills;
         },
         methods: {
             activar(e) {
@@ -45,6 +60,10 @@
                 // Agregar las skills al input hidden
                 const stringHabilidades = [...this.selectedSkills]
                 document.querySelector('#skills').value = stringHabilidades;
+            },
+            verificarActive(skill) {
+                console.log('Selecting: ', skill)
+                return this.selectedSkills.has(skill) ? 'bg-gray-400' : "";
             }
         }
 

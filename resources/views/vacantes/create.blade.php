@@ -216,18 +216,24 @@
             
             <div class="mb-5">
                 <label for="skills" class="block text-gray-700 text-sm mb-2"> Habilidades: </label>
+                <span class="text-xs"> (Elige mínimo 3) </span>
                 @php
                     $skills = ['HTML5', 'CSS3', 'Nodejs', 'PHP', 'Golang', 'Java', 'ASP.NET', 'REACT', 'VUE', 'SVELTE', 'Wordpress', 'Ruby on Rails', 'Python'];
                 @endphp
                 <skills-list
                     :skills="{{ json_encode($skills) }}"
+                    :oldskills="{{ json_encode( old('skills') ) }}"
                 >
-
-
                 </skills-list>
+                   
+                @error('skills')
+                    <div class="bg-red-100 border border-red-500 text-sm text-red-700 px-4 py-3 rounded relative mt-3 mb-6"  role="alert">
+                        <strong class="font-bold"> Error </strong>
+                        <span class="block">{{ $message }}</span>
+                    </div>
+                @enderror
 
                 
-
             </div>
 
 
