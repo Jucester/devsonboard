@@ -8,6 +8,7 @@ use App\Models\Categoria;
 use App\Models\Ubicacion;
 use App\Models\Experiencia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class VacanteController extends Controller
@@ -29,8 +30,11 @@ class VacanteController extends Controller
      */
     public function index()
     {
-        //
-        return view('vacantes.index');
+        // Listar vacantes
+
+        $vacantes = Vacante::where('user_id', Auth::user()->id)->simplePaginate(6);
+
+        return view('vacantes.index', compact('vacantes'));
     }
 
     /**
@@ -70,7 +74,20 @@ class VacanteController extends Controller
         ]);
 
 
+        auth()->user()->vacantes()->create([
+            'titulo' => $data['titulo'],
+            'skills' => $data['skills'],
+            'imagen' => $data['imagen'],
+            'descripcion' => $data['descripcion'],
+            'categoria_id' => $data['categoria'],
+            'experiencia_id' => $data['experiencia'],
+            'ubicacion_id' => $data['ubicacion'],
+            'salario_id' => $data['salario'],
+        ]);
 
+
+        return redirect()->action('App\Http\Controllers\VacanteController@index');
+     
     }
 
     /**

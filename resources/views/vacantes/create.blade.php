@@ -216,7 +216,7 @@
             
             <div class="mb-5">
                 <label for="skills" class="block text-gray-700 text-sm mb-2"> Habilidades: </label>
-                <span class="text-xs"> (Elige mínimo 3) </span>
+                <span class="text-xs mb-2"> (Elige mínimo 3) </span>
                 @php
                     $skills = ['HTML5', 'CSS3', 'Nodejs', 'PHP', 'Golang', 'Java', 'ASP.NET', 'REACT', 'VUE', 'SVELTE', 'Wordpress', 'Ruby on Rails', 'Python'];
                 @endphp

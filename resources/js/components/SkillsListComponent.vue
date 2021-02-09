@@ -62,8 +62,7 @@
                 document.querySelector('#skills').value = stringHabilidades;
             },
             verificarActive(skill) {
-                console.log('Selecting: ', skill)
-                return this.selectedSkills.has(skill) ? 'bg-gray-400' : "";
+                return this.selectedSkills.has(skill) ? 'bg-gray-400' : '';
             }
         }
 
