@@ -19,6 +19,7 @@
            
             <p class="block text-gray-700 font-bold my-2">
                 Publicado: <span class="font-normal"> {{ $vacante->created_at->diffForHumans() }} </span>
+                por: <span class="font-normal"> {{ $vacante->user->name }} </span>
             </p>
 
             <p class="block text-gray-700 font-bold my-2">

@@ -20,10 +20,9 @@ class Vacante extends Model
         'salario_id' 
     ];
 
-
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function categoria()
@@ -31,13 +30,11 @@ class Vacante extends Model
         return $this->belongsTo(Categoria::class);
     }
 
-    
     public function salario()
     {
         return $this->belongsTo(Salario::class);
     }
 
-    
     public function ubicacion()
     {
         return $this->belongsTo(Ubicacion::class);
@@ -47,4 +44,5 @@ class Vacante extends Model
     {
         return $this->belongsTo(Experiencia::class);
     }
+
 }
